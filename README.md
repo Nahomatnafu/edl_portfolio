@@ -8,9 +8,11 @@ Project descriptions, cover images and photo galleries are in content.js. Set a 
 
 ## Photography
 
+The 18 additional photographs form a shared Guggenheim & Biennale archive. Individual image venues are unassigned; the professional roles remain distinct in the project details. The homepage strip includes selected photos from this archive, and the desktop introduction uses one supplied portrait.
+
 The 21 supplied exhibition photographs are provisionally grouped under Microcosmo, based on the owner’s identification. Originals remain outside this repository; the assets directory contains optimized WebP copies with metadata stripped. Confirm the project grouping with Edlawit before renaming exhibition details.
 
-Institution imagery is credited with source links in the Image credits panel. These images represent institutional settings and programmes, not a claim that Edlawit worked on the depicted exhibitions. The Guggenheim facade photograph by BKP is CC BY-SA 3.0; its resized WebP copy is shared under that license. Other photographs and artworks remain the property of their respective creators.
+Institution imagery is credited with source links in the Image credits panel. These images represent institutional settings and programmes, not a claim that Edlawit worked on the depicted exhibitions. Other photographs and artworks remain the property of their respective creators.
 
 ## Local preview
 

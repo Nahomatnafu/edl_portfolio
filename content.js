@@ -97,26 +97,99 @@ window.PORTFOLIO_PROJECTS = [
     ]
   },
   {
-    "id": "biennale",
-    "title": "The Biennale",
+    "id": "guggenheim-biennale",
+    "title": "Guggenheim & Biennale",
     "category": "curation",
-    "type": "Exhibition operations",
-    "role": "Internship · Pavilion operations",
-    "image": "/assets/biennale.webp",
-    "alt": "The entrance to La Biennale at the Giardini, Venice",
-    "description": "Led daily pavilion operations during an internship at the Biennale. This experience informs an ongoing interest in cultural exchange and the development of an East African biennale initiative.",
-    "note": ""
-  },
-  {
-    "id": "guggenheim",
-    "title": "Guggenheim",
-    "category": "curation",
-    "type": "Art talks & education",
-    "role": "Internship · Art talks and seminar",
-    "image": "/assets/guggenheim.webp",
-    "alt": "The Peggy Guggenheim Collection facade on the Grand Canal",
-    "description": "Gave art talks and a seminar as part of an internship at the Guggenheim, connecting visitors with art through conversation.",
-    "note": ""
+    "type": "Art education & exhibition operations",
+    "role": "Internships in Venice",
+    "image": "/assets/venice-archive-15.webp",
+    "alt": "A visitor beside a large figurative painting",
+    "description": "Art talks, cultural exchange, and the day-to-day life of exhibitions in Venice.",
+    "details": [
+      {
+        "title": "Guggenheim",
+        "text": "Gave art talks and a seminar, connecting visitors with art through conversation."
+      },
+      {
+        "title": "The Biennale",
+        "text": "Led daily pavilion operations. This experience informs an ongoing interest in cultural exchange and the development of an East African biennale initiative."
+      }
+    ],
+    "note": "",
+    "gallery": [
+      {
+        "src": "/assets/venice-archive-01.webp",
+        "alt": "A gallery conversation beside abstract artworks"
+      },
+      {
+        "src": "/assets/venice-archive-02.webp",
+        "alt": "A portrait beside a circular geometric artwork"
+      },
+      {
+        "src": "/assets/venice-archive-03.webp",
+        "alt": "Visitors talking in an exhibition space"
+      },
+      {
+        "src": "/assets/venice-archive-04.webp",
+        "alt": "A speaker beside a painting against a red gallery wall"
+      },
+      {
+        "src": "/assets/venice-archive-05.webp",
+        "alt": "A person positioning material on a gallery wall"
+      },
+      {
+        "src": "/assets/venice-archive-06.webp",
+        "alt": "Paintings and a table in a museum interior"
+      },
+      {
+        "src": "/assets/venice-archive-07.webp",
+        "alt": "A conversation in a red-walled exhibition room"
+      },
+      {
+        "src": "/assets/venice-archive-08.webp",
+        "alt": "A circular installation in a museum gallery"
+      },
+      {
+        "src": "/assets/venice-archive-09.webp",
+        "alt": "An exhibition corridor with paintings and sculpture"
+      },
+      {
+        "src": "/assets/venice-archive-10.webp",
+        "alt": "Visitors exploring a bright gallery"
+      },
+      {
+        "src": "/assets/venice-archive-11.webp",
+        "alt": "Visitors viewing artworks on a yellow exhibition wall"
+      },
+      {
+        "src": "/assets/venice-archive-12.webp",
+        "alt": "A geometric painting in a museum corridor"
+      },
+      {
+        "src": "/assets/venice-archive-13.webp",
+        "alt": "Paintings and a bench in a quiet gallery"
+      },
+      {
+        "src": "/assets/venice-archive-14.webp",
+        "alt": "A speaker and visitors beside artworks on a red wall"
+      },
+      {
+        "src": "/assets/venice-archive-15.webp",
+        "alt": "A visitor beside a large figurative painting"
+      },
+      {
+        "src": "/assets/venice-archive-16.webp",
+        "alt": "Large paintings in a gallery with timber ceiling beams"
+      },
+      {
+        "src": "/assets/venice-archive-17.webp",
+        "alt": "Paintings along a sunlit exhibition room"
+      },
+      {
+        "src": "/assets/venice-archive-18.webp",
+        "alt": "An exhibition publication held in front of a painting"
+      }
+    ]
   },
   {
     "id": "saatchi-yates",
