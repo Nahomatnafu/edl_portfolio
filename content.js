@@ -219,25 +219,56 @@ window.PORTFOLIO_PROJECTS = [
     "category": "film",
     "type": "ITS · Video production & editing",
     "role": "Video producer · Video editor",
-    "description": "Video production and editing with ITS. The upcoming selection includes a demo reel, a sorority video, Maverick Machine, and Coursera.",
-    "note": "Original films are being prepared for publication. Check back for the full selection.",
+    "description": "Selected video production and editing work with ITS: campus stories, educational content, community projects, and a demo reel.",
+    "note": "",
     "videos": [
       {
-        "title": "Demo reel",
-        "youtubeId": ""
+        "title": "Greek Life Fraternity and Sorority Life Fraternity",
+        "youtubeId": "Acuf3EhpghQ",
+        "thumbnail": "/assets/video-Acuf3EhpghQ.webp"
       },
       {
-        "title": "Sorority video",
-        "youtubeId": ""
+        "title": "Greek Life Fraternity and Sorority Life Sorority",
+        "youtubeId": "1G14xxJjGmw",
+        "thumbnail": "/assets/video-1G14xxJjGmw.webp"
       },
       {
-        "title": "Maverick Machine",
-        "youtubeId": ""
+        "title": "Financial Aid Exit Counseling 2026",
+        "youtubeId": "9vrTHY5uIlI",
+        "thumbnail": "/assets/video-9vrTHY5uIlI.webp"
       },
       {
-        "title": "Coursera",
-        "youtubeId": ""
+        "title": "Coursera 06 Advanced Leadership Course 1 Video 7",
+        "youtubeId": "vOkubQRToPs",
+        "thumbnail": "/assets/video-vOkubQRToPs.webp"
+      },
+      {
+        "title": "United Way",
+        "youtubeId": "aDZywvh_SFg",
+        "thumbnail": "/assets/video-aDZywvh_SFg.webp"
+      },
+      {
+        "title": "College of Business IBE",
+        "youtubeId": "Hg4IilV-PcY",
+        "thumbnail": "/assets/video-Hg4IilV-PcY.webp"
+      },
+      {
+        "title": "Greek Life Fraternity and Sorority Life Primary",
+        "youtubeId": "ASg2TFRv4DM",
+        "thumbnail": "/assets/video-ASg2TFRv4DM.webp"
+      },
+      {
+        "title": "Esports Summer Camp",
+        "youtubeId": "J8TXgzbUBkU",
+        "thumbnail": "/assets/video-J8TXgzbUBkU.webp"
+      },
+      {
+        "title": "Video Production Team Edl's Edit Demo Reel",
+        "youtubeId": "Wtg0dsutwe0",
+        "thumbnail": "/assets/video-Wtg0dsutwe0.webp"
       }
-    ]
+    ],
+    "image": "/assets/video-Acuf3EhpghQ.webp",
+    "alt": "Preview of Greek Life Fraternity and Sorority Life Fraternity"
   }
 ];

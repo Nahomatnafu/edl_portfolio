@@ -6,7 +6,7 @@ let activeProject = null;
 let photoIndex = 0;
 function render(filter = 'all') {
  const visible = projects.filter(project => filter === 'all' || project.category === filter);
- grid.innerHTML = visible.map(project => '<button class="project-card" data-project="' + project.id + '" aria-label="View ' + escapeHtml(project.title) + ' details"><div class="project-image ' + (project.category === 'film' ? 'film-art' : '') + '">' + (project.image ? '<img loading="lazy" src="' + project.image + '" alt="' + escapeHtml(project.alt) + '">' : '<strong>Stories<br>in motion.</strong>') + (project.category === 'film' ? '<span class="status-tag">FILMS FORTHCOMING</span>' : '') + '<span class="view-label">Explore</span></div><div class="card-caption"><div><h3>' + escapeHtml(project.title) + '</h3><p>' + escapeHtml(project.type) + '</p></div><span class="card-plus" aria-hidden="true">+</span></div></button>').join('');
+ grid.innerHTML = visible.map(project => '<button class="project-card" data-project="' + project.id + '" aria-label="View ' + escapeHtml(project.title) + ' details"><div class="project-image ' + (project.category === 'film' ? 'film-art' : '') + '">' + (project.image ? '<img loading="lazy" src="' + project.image + '" alt="' + escapeHtml(project.alt) + '">' : '<strong>Stories<br>in motion.</strong>') + (project.category === 'film' ? '<span class="status-tag">'+project.videos.length+' VIDEOS</span>' : '') + '<span class="view-label">Explore</span></div><div class="card-caption"><div><h3>' + escapeHtml(project.title) + '</h3><p>' + escapeHtml(project.type) + '</p></div><span class="card-plus" aria-hidden="true">+</span></div></button>').join('');
  document.querySelector('#work-count').textContent = visible.length + (visible.length === 1 ? ' selection' : ' selections');
 }
 function openDialog(target){target.showModal();document.body.classList.add('modal-open');}
@@ -19,10 +19,24 @@ function showPhoto(index){
  document.querySelector('.gallery-counter').textContent=(photoIndex+1)+' / '+activeProject.gallery.length;
  document.querySelectorAll('[data-photo]').forEach(button=>{const active=Number(button.dataset.photo)===photoIndex;button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active));});
 }
+function videoFrame(video){
+ return '<iframe src="https://www.youtube-nocookie.com/embed/'+video.youtubeId+'?rel=0&amp;playsinline=1" title="'+escapeHtml(video.title)+'" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+}
+function selectVideo(index){
+ const videos=(activeProject?.videos||[]).filter(video=>/^[a-zA-Z0-9_-]{11}$/.test(video.youtubeId));
+ const video=videos[index];if(!video)return;
+ document.querySelector('#film-viewer').innerHTML=videoFrame(video);
+ document.querySelector('#current-film-title').textContent=video.title;
+ document.querySelector('#watch-youtube').href='https://youtu.be/'+video.youtubeId;
+ document.querySelector('#film-selection-status').textContent='Video '+(index+1)+' of '+videos.length;
+ document.querySelectorAll('[data-video]').forEach(button=>{const active=Number(button.dataset.video)===index;button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active));});
+ document.querySelector('#film-viewer').scrollIntoView({block:'start',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+}
 function openProject(project){
  activeProject=project;photoIndex=0;
- const films=(project.videos||[]).map(video=>'<div class="film-row"><strong>'+escapeHtml(video.title)+'</strong><span>'+(/^[a-zA-Z0-9_-]{11}$/.test(video.youtubeId)?'WATCH BELOW':'UPCOMING')+'</span></div>'+(/^[a-zA-Z0-9_-]{11}$/.test(video.youtubeId)?'<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/'+video.youtubeId+'" title="'+escapeHtml(video.title)+'" allow="fullscreen; picture-in-picture" allowfullscreen></iframe>':'')).join('');
- let media=project.image?'<img class="dialog-image" src="'+project.image+'" alt="'+escapeHtml(project.alt)+'">':'';
+ const videos=(project.videos||[]).filter(video=>/^[a-zA-Z0-9_-]{11}$/.test(video.youtubeId));
+ const films=videos.length?'<div class="film-viewer" id="film-viewer">'+videoFrame(videos[0])+'</div><div class="film-now"><h3 id="current-film-title">'+escapeHtml(videos[0].title)+'</h3><a id="watch-youtube" href="https://youtu.be/'+videos[0].youtubeId+'" target="_blank" rel="noopener noreferrer">Watch on YouTube</a></div><p class="film-selection-label" id="film-selection-status" role="status" aria-live="polite">Video 1 of '+videos.length+'</p><div class="film-selector" role="group" aria-label="Choose a video">'+videos.map((video,index)=>'<button class="film-choice'+(index===0?' active':'')+'" data-video="'+index+'" aria-pressed="'+(index===0)+'" aria-label="Select '+escapeHtml(video.title)+'"><span class="film-thumbnail"><img src="'+video.thumbnail+'" alt="" loading="lazy"><span class="film-play" aria-hidden="true">▶</span></span><span class="film-choice-title">'+escapeHtml(video.title)+'</span></button>').join('')+'</div>':'';
+ let media=project.image&&!project.videos?'<img class="dialog-image" src="'+project.image+'" alt="'+escapeHtml(project.alt)+'">':'';
  if(project.gallery){
  const photo=project.gallery[0];
  media='<div class="gallery-stage" aria-label="Exhibition photo gallery"><img class="gallery-image" src="'+photo.src+'" alt="'+escapeHtml(photo.alt)+'"><div class="gallery-navigation"><button data-direction="-1" aria-label="Previous photograph">Previous</button><span class="gallery-counter" role="status" aria-live="polite">1 / '+project.gallery.length+'</span><button data-direction="1" aria-label="Next photograph">Next</button></div><div class="gallery-thumbnails" role="group" aria-label="Choose a photograph">'+project.gallery.map((photo,index)=>'<button data-photo="'+index+'" class="'+(index===0?'active':'')+'" aria-label="Show photograph '+(index+1)+'" aria-pressed="'+(index===0)+'"><img src="'+photo.src+'" alt="" loading="lazy"></button>').join('')+'</div></div>';
@@ -31,7 +45,7 @@ function openProject(project){
  openDialog(dialog);
 }
 grid.addEventListener('click',event=>{const card=event.target.closest('[data-project]');if(card)openProject(projects.find(project=>project.id===card.dataset.project));});
-dialog.addEventListener('click',event=>{const direction=event.target.closest('[data-direction]');const photo=event.target.closest('[data-photo]');if(direction)showPhoto(photoIndex+Number(direction.dataset.direction));if(photo)showPhoto(Number(photo.dataset.photo));});
+dialog.addEventListener('click',event=>{const video=event.target.closest('[data-video]');if(video)selectVideo(Number(video.dataset.video));const direction=event.target.closest('[data-direction]');const photo=event.target.closest('[data-photo]');if(direction)showPhoto(photoIndex+Number(direction.dataset.direction));if(photo)showPhoto(Number(photo.dataset.photo));});
 dialog.addEventListener('keydown',event=>{if(!activeProject?.gallery)return;if(event.key==='ArrowRight'){event.preventDefault();showPhoto(photoIndex+1);}if(event.key==='ArrowLeft'){event.preventDefault();showPhoto(photoIndex-1);}});
 document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('[data-filter]').forEach(item=>{const active=item===button;item.classList.toggle('active',active);item.setAttribute('aria-pressed',String(active));});render(button.dataset.filter);}));
 document.querySelectorAll('dialog').forEach(target=>{target.querySelector('.dialog-close').addEventListener('click',()=>closeDialog(target));target.addEventListener('click',event=>{if(event.target===target){const rect=target.getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)closeDialog(target);}});target.addEventListener('close',()=>{document.body.classList.remove('modal-open');if(target===dialog){document.querySelectorAll('#dialog-content iframe').forEach(frame=>frame.remove());activeProject=null;}});});

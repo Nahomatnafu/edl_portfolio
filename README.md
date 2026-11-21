@@ -4,7 +4,7 @@ A responsive portfolio for curation and moving image, built with semantic HTML, 
 
 ## Update content
 
-Project descriptions, cover images and photo galleries are in content.js. Set a film youtubeId to its 11-character YouTube ID to enable its player. Hero photographs and the credits panel are in index.html.
+Project descriptions, cover images and photo galleries are in content.js. The film collection has nine YouTube videos in the supplied order. Each entry includes its YouTube title, 11-character youtubeId, and local thumbnail. The viewer loads one privacy-enhanced YouTube player at a time. Hero photographs and the credits panel are in index.html.
 
 ## Photography
 
